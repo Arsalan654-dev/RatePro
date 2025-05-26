@@ -80,9 +80,7 @@ function App() {
   
   const [darkMode, setDarkMode] = useState(() => {
     const savedTheme = localStorage.getItem("darkMode")
-    return 
-   
-    savedTheme ? JSON.parse(savedTheme) : window.matchMedia("(prefers-color-scheme: dark)").matches
+    return savedTheme ? JSON.parse(savedTheme) : window.matchMedia("(prefers-color-scheme: dark)").matches
   })
 
   useEffect(() => {
