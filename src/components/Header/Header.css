@@ -1,0 +1,221 @@
+ .header {
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.header.light {
+  background-color: var(--light-card);
+  border-bottom: 1px solid var(--light-border);
+}
+
+.header.dark {
+  background-color: var(--dark-card);
+  border-bottom: 1px solid var(--dark-border);
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+}
+
+.menu-toggle {
+  background: none;
+  border: none;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 16px;
+  color: inherit;
+  cursor: pointer;
+}
+
+.page-title {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.theme-toggle,
+.notification-btn {
+  background: none;
+  border: none;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: inherit;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  transition: background-color 0.2s ease;
+}
+
+.header.light .theme-toggle:hover,
+.header.light .notification-btn:hover {
+  background-color: var(--light-hover);
+}
+
+.header.dark .theme-toggle:hover,
+.header.dark .notification-btn:hover {
+  background-color: var(--dark-hover);
+}
+
+.user-profile {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  padding: 6px 12px;
+  border-radius: var(--border-radius);
+  transition: background-color 0.2s ease;
+}
+
+.header.light .user-profile:hover {
+  background-color: var(--light-hover);
+}
+
+.header.dark .user-profile:hover {
+  background-color: var(--dark-hover);
+}
+
+.user-name {
+  font-weight: 500;
+}
+
+.search-container {
+  position: relative;
+  margin-left: 16px;
+}
+
+.search-input {
+  padding: 8px 12px 8px 36px;
+  border-radius: var(--border-radius);
+  border: 1px solid var(--light-border);
+  background-color: var(--light-bg);
+  width: 300px;
+}
+
+.dark .search-input {
+  border-color: var(--dark-border);
+  background-color: var(--dark-bg);
+  color: var(--dark-text);
+}
+
+.search-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--secondary-color);
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  z-index: 1000;
+  display: none;
+  min-width: 10rem;
+  padding: 0.5rem 0;
+  margin: 0.125rem 0 0;
+  font-size: 1rem;
+  color: var(--light-text);
+  text-align: left;
+  list-style: none;
+  background-color: var(--light-card);
+  background-clip: padding-box;
+  border: 1px solid var(--light-border);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-md);
+}
+
+.dark .dropdown-menu {
+  color: var(--dark-text);
+  background-color: var(--dark-card);
+  border-color: var(--dark-border);
+}
+
+.dropdown-menu.show {
+  display: block;
+}
+
+.dropdown-item {
+  display: block;
+  width: 100%;
+  padding: 0.25rem 1.5rem;
+  clear: both;
+  font-weight: 400;
+  color: var(--light-text);
+  text-align: inherit;
+  white-space: nowrap;
+  background-color: transparent;
+  border: 0;
+  text-decoration: none;
+}
+
+.dark .dropdown-item {
+  color: var(--dark-text);
+}
+
+.dropdown-item:hover,
+.dropdown-item:focus {
+  color: var(--light-text);
+  text-decoration: none;
+  background-color: var(--light-hover);
+}
+
+.dark .dropdown-item:hover,
+.dark .dropdown-item:focus {
+  color: var(--dark-text);
+  background-color: var(--dark-hover);
+}
+
+.dropdown-divider {
+  height: 0;
+  margin: 0.5rem 0;
+  overflow: hidden;
+  border-top: 1px solid var(--light-border);
+}
+
+.dark .dropdown-divider {
+  border-top-color: var(--dark-border);
+}
+
+@media (max-width: 768px) {
+  .user-name {
+    display: none;
+  }
+
+  .search-container {
+    display: none;
+  }
+}
+
+@media (max-width: 576px) {
+  .header {
+    padding: 0 16px;
+  }
+
+  .page-title {
+    font-size: 16px;
+  }
+} 
+
+
+
