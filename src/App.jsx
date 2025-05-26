@@ -9,10 +9,10 @@ import Surveys from "./pages/Surveys/Surveys.jsx"
 import CreateSurvey from "./pages/CreateSurvey/CreateSurvey.jsx"
 // import EditSurvey from "./pages/EditSurvey/EditSurvey.jsx"
 // import SurveyPreview from "./pages/SurveyPreview/SurveyPreview.jsx"
-// import SurveyTemplates from "./pages/SurveyTemplates/SurveyTemplates.jsx"
-// import Audiences from "./pages/Audiences/Audiences.jsx"
+import Templates from "./pages/Templates/Templates.jsx"
+import Audiences from "./pages/Audiences/Audiences.jsx"
 import Analytics from "./pages/Analytics/Analytics.jsx"
-// import Support from "./pages/Support/Support.jsx"
+
 import Settings from "./pages/Settings/Settings.jsx"
 import Profile from "./pages/Profile/Profile.jsx"
 import Login from "./pages/Auth/Login.jsx"
@@ -20,17 +20,18 @@ import Signup from "./pages/Auth/Signup.jsx"
 import ForgotPassword from "./pages/Auth/ForgotPassword.jsx"
 import ResetPassword from "./pages/Auth/ResetPassword.jsx"
 // import TakeSurvey from "./pages/TakeSurvey/TakeSurvey.jsx"
-// import ThankYou from "./pages/TakeSurvey/ThankYou.jsx"
-// import ContentManagement from "./pages/ContentManagement/ContentManagement.jsx"
+import ThankYou from "./pages/Settings/ThankYouPage.jsx"
+
 import Integrations from "./pages/ContentManagement/Integrations.jsx"
 // import Pricing from "./pages/ContentManagement/Pricing.jsx"
 // import ContactUs from "./pages/ContentManagement/ContactUs.jsx"
-// import Testimonials from "./pages/ContentManagement/Testimonials.jsx"
+import Testimonials from "./pages/ContentManagement/Testimonials.jsx"
 // import Reviews from "./pages/ContentManagement/Reviews.jsx"
-// import Widgets from "./pages/ContentManagement/Widgets.jsx"
+import Widgets from "./pages/ContentManagement/Widgets.jsx"
 // import WebsiteContent from "./pages/ContentManagement/WebsiteContent.jsx"
 import NotFound from "./pages/NotFound/NotFound.jsx"
 import "./App.css"
+
 
 // Protected route component
 const ProtectedRoute = ({ children, requiredRoles = [], requiredPermissions = [] }) => {
@@ -76,9 +77,12 @@ const PublicRoute = ({ children }) => {
 }
 
 function App() {
+  
   const [darkMode, setDarkMode] = useState(() => {
     const savedTheme = localStorage.getItem("darkMode")
-    return savedTheme ? JSON.parse(savedTheme) : window.matchMedia("(prefers-color-scheme: dark)").matches
+    return 
+   
+    savedTheme ? JSON.parse(savedTheme) : window.matchMedia("(prefers-color-scheme: dark)").matches
   })
 
   useEffect(() => {
@@ -95,6 +99,7 @@ function App() {
   }
 
   return (
+    
     <AuthProvider>
       <Router>
         <div className={`app-container ${darkMode ? "dark" : "light"}`}>
@@ -134,8 +139,8 @@ function App() {
             />
 
             {/* Survey taking routes (public) */}
-            {/* <Route path="/s/:surveyId" element={<TakeSurvey />} />
-            <Route path="/thank-you" element={<ThankYou />} /> */}
+            {/* <Route path="/s/:surveyId" element={<TakeSurvey />} />*/}
+            <Route path="/thank-you" element={<ThankYou />} /> 
 
             {/* Protected routes */}
             <Route
@@ -151,10 +156,10 @@ function App() {
               <Route path="surveys/create" element={<CreateSurvey />} />
               {/* <Route path="surveys/edit/:id" element={<EditSurvey />} /> */}
               {/* <Route path="surveys/preview/:id" element={<SurveyPreview />} /> */}
-              {/* <Route path="templates" element={<SurveyTemplates />} /> */}
-              {/* <Route path="audiences" element={<Audiences />} /> */}
+              <Route path="templates" element={<Templates />} />
+              <Route path="audiences" element={<Audiences />} />
               <Route path="analytics" element={<Analytics />} />
-              {/* <Route path="support" element={<Support />} /> */}
+            
               <Route path="settings" element={<Settings />} />
               <Route path="profile" element={<Profile />} />
 
@@ -163,10 +168,12 @@ function App() {
               <Route path="content/integrations" element={<Integrations />} />
               {/* <Route path="content/pricing" element={<Pricing />} /> */}
               {/* <Route path="content/contact" element={<ContactUs />} />
-              <Route path="content/testimonials" element={<Testimonials />} />
+              
               <Route path="content/reviews" element={<Reviews />} />
-              <Route path="content/widgets" element={<Widgets />} />
+           
               <Route path="content/website" element={<WebsiteContent />} /> */}
+              <Route path="content/testimonials" element={<Testimonials />} />
+                 <Route path="content/widgets" element={<Widgets />} />
             </Route>
 
             {/* 404 route */}

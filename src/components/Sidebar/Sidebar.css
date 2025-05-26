@@ -268,3 +268,157 @@
   margin-right: 8px;
   font-size: 18px;
 }
+.sidebar {
+  width: 260px;
+  background-color: #1e1e2f;
+  color: #fff;
+  height: 100vh;
+  padding: 1rem 0.5rem;
+  transition: width 0.3s ease, transform 0.3s ease;
+  overflow-y: auto;
+  z-index: 1001;
+}
+
+.sidebar.collapsed {
+  width: 80px;
+}
+
+.sidebar.dark {
+  background-color: #121212;
+}
+
+.sidebar.light {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+.sidebar .sidebar-toggle {
+  background: none;
+  border: none;
+  color: inherit;
+  font-size: 24px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: none;
+  cursor: pointer;
+}
+
+/* Show toggle button on mobile */
+@media (max-width: 768px) {
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform: translateX(-100%);
+  }
+
+  .sidebar.mobile-open {
+    transform: translateX(0);
+  }
+
+  .sidebar .sidebar-toggle {
+    display: block;
+  }
+}
+
+.logo-container {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.logo-text {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.logo-icon {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.nav-menu ul {
+  list-style: none;
+  padding: 0;
+}
+
+.nav-menu li {
+  margin: 0.5rem 0;
+}
+
+.nav-menu a,
+.submenu-toggle {
+  display: flex;
+  align-items: center;
+  padding: 0.6rem 1rem;
+  text-decoration: none;
+  color: inherit;
+  border-radius: 6px;
+  transition: background 0.2s;
+}
+
+.nav-menu a:hover,
+.submenu-toggle:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.nav-menu .icon {
+  font-size: 20px;
+  margin-right: 1rem;
+  display: inline-block;
+  min-width: 24px;
+  text-align: center;
+}
+
+.sidebar.collapsed .nav-menu .text {
+  display: none;
+}
+
+.submenu-arrow {
+  margin-left: auto;
+}
+
+.submenu {
+  padding-left: 1.5rem;
+}
+
+.active-page {
+  background-color: rgba(255, 255, 255, 0.2);
+  font-weight: bold;
+}
+.sidebar-toggle {
+  display: none;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: transparent;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #333;
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    position: fixed;
+    left: -240px;
+    top: 0;
+    bottom: 0;
+    z-index: 1000;
+    background: #fff;
+    width: 240px;
+    transition: left 0.3s ease;
+  }
+
+  .sidebar.mobile-open {
+    left: 0;
+  }
+
+  .sidebar-toggle {
+    display: block;
+  }
+
+  .main-content {
+    padding: 16px;
+  }
+}

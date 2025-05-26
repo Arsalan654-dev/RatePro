@@ -1,137 +1,57 @@
 // src/pages/Settings/ThankYouPage.jsx
-"use client"
+"use client";
 
-import { useState } from "react"
-import { MdSave, MdPreview } from "react-icons/md"
+import { useState } from "react";
+
+import { MdCheck } from "react-icons/md";
 
 const ThankYouPage = () => {
-  const [settings, setSettings] = useState({
-    enabled: true,
-    type: 'default', // 'default', 'redirect', or 'custom'
-    message: 'Thank you for completing our survey!',
-    redirectUrl: '',
-    showSocialSharing: true,
-    showCoupon: false,
-    couponCode: ''
-  })
+  const [message, setMessage] = useState("Thank you for completing the survey!");
+  const [redirectUrl, setRedirectUrl] = useState("");
+  const [isSaved, setIsSaved] = useState(false);
 
-  const handleChange = (e) => {
-    const { name, value, type, checked } = e.target
-    setSettings(prev => ({
-      ...prev,
-      [name]: type === 'checkbox' ? checked : value
-    }))
-  }
-
-  const saveSettings = (e) => {
-    e.preventDefault()
-    // Save thank you page settings
-    console.log('Thank you page settings saved:', settings)
-  }
+  const handleSave = () => {
+    // Save logic goes here (API call)
+    console.log("Saved Thank You settings:", { message, redirectUrl });
+    setIsSaved(true);
+    setTimeout(() => setIsSaved(false), 2000);
+  };
 
   return (
-    <div className="thank-you-page">
-      <div className="page-header">
-        <h1>Thank You Page Settings</h1>
+    <div className="p-4 max-w-3xl mx-auto">
+      <h2 className="text-xl font-bold mb-4">Customize Thank You Page</h2>
+
+      <div className="mb-4">
+        <label className="block text-sm font-medium mb-1">Custom Message</label>
+        <textarea
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
+          placeholder="Enter a custom thank-you message..."
+          rows={4}
+        />
       </div>
 
-      <form onSubmit={saveSettings}>
-        <div className="form-group toggle-group">
-          <label>Enable Custom Thank You Page</label>
-          <div className="toggle-switch">
-            <input
-              type="checkbox"
-              id="enabled"
-              name="enabled"
-              checked={settings.enabled}
-              onChange={handleChange}
-            />
-            <label htmlFor="enabled" className="toggle-label"></label>
-          </div>
+      <div className="mb-4">
+        <label className="block text-sm font-medium mb-1">Redirect URL (Optional)</label>
+        <input
+          type="url"
+          value={redirectUrl}
+          onChange={(e) => setRedirectUrl(e.target.value)}
+          placeholder="https://example.com/thank-you"
+        />
+      </div>
+
+      <button onClick={handleSave} className="mt-2">
+        Save Settings
+      </button>
+
+      {isSaved && (
+        <div className="text-green-600 flex items-center gap-2 mt-3">
+          <MdCheck className="text-xl" /> Settings saved!
         </div>
+      )}
+    </div>
+  );
+};
 
-        {settings.enabled && (
-          <>
-            <div className="form-group">
-              <label>Thank You Page Type</label>
-              <div className="radio-group">
-                <label>
-                  <input
-                    type="radio"
-                    name="type"
-                    value="default"
-                    checked={settings.type === 'default'}
-                    onChange={handleChange}
-                  />
-                  Default Message
-                </label>
-                <label>
-                  <input
-                    type="radio"
-                    name="type"
-                    value="redirect"
-                    checked={settings.type === 'redirect'}
-                    onChange={handleChange}
-                  />
-                  Redirect to URL
-                </label>
-                <label>
-                  <input
-                    type="radio"
-                    name="type"
-                    value="custom"
-                    checked={settings.type === 'custom'}
-                    onChange={handleChange}
-                  />
-                  Custom Page
-                </label>
-              </div>
-            </div>
-
-            {settings.type === 'default' && (
-              <div className="form-group">
-                <label>Thank You Message</label>
-                <textarea
-                  name="message"
-                  value={settings.message}
-                  onChange={handleChange}
-                  rows={4}
-                />
-              </div>
-            )}
-
-            {settings.type === 'redirect' && (
-              <div className="form-group">
-                <label>Redirect URL</label>
-                <input
-                  type="url"
-                  name="redirectUrl"
-                  value={settings.redirectUrl}
-                  onChange={handleChange}
-                  placeholder="https://example.com/thank-you"
-                  required
-                />
-              </div>
-            )}
-
-            {settings.type === 'custom' && (
-              <div className="form-group">
-                <label>Custom HTML</label>
-                <textarea
-                  name="customHtml"
-                  value={settings.customHtml || ''}
-                  onChange={handleChange}
-                  rows={8}
-                  placeholder="<div class='thank-you'><h1>Thank You!</h1></div>"
-                />
-              </div>
-            )}
-
-            <div className="form-group toggle-group">
-              <label>Show Social Sharing Buttons</label>
-              <div className="toggle-switch">
-                <input
-                  type="checkbox"
-                  id="showSocialSharing"
-                  name="showSocialSharing"
-                  checked={settings.showSocialSh
+export default ThankYouPage;

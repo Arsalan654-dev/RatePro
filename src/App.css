@@ -2,6 +2,7 @@
 .app-container {
   display: flex;
   min-height: 100vh;
+  width: 100%;
 }
 
 /* Dashboard Styles */
@@ -293,3 +294,68 @@
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
 }
+
+.app-container {
+  display: flex;
+  min-height: 100vh;
+  font-family: sans-serif;
+}
+
+.sidebar {
+  transition: width 0.3s ease;
+}
+
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #282c34;
+  color: white;
+  padding: 10px 20px;
+}
+
+.menu-button {
+  font-size: 24px;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  display: none;
+}
+
+/* Responsive Behavior */
+@media (max-width: 768px) {
+  .menu-button {
+    display: inline-block;
+  }
+
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    z-index: 1000;
+    width: 240px;
+  transition: all 0.3s ease
+  }
+
+  .main-content {
+    margin-left: 0;
+  }
+
+  .sidebar.mobile-open {
+    transform: translateX(0);
+  }
+
+  .sidebar:not(.mobile-open) {
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+  }
+}
+
