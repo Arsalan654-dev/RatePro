@@ -1,13 +1,17 @@
+// src\components\SurveyList\SurveyList.jsx
 "use client"
 
 import { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 import { MdEdit, MdDelete, MdVisibility } from "react-icons/md"
 import "./SurveyList.css"
+import Pagination from "../../components/Pagination/Pagination"
 
 const SurveyList = ({ limit = 5 }) => {
   const [surveys, setSurveys] = useState([])
   const [loading, setLoading] = useState(true)
+  const [pagination, setPagination] = useState({ page: 1, limit: 10 });
+  const [filters, setFilters] = useState({});
 
   useEffect(() => {
     // Simulating data fetching
@@ -129,6 +133,11 @@ const SurveyList = ({ limit = 5 }) => {
           ))}
         </tbody>
       </table>
+        <Pagination
+        current={pagination.page}
+        total={100}
+        onChange={page => setPagination(prev => ({...prev, page}))}
+      />
     </div>
   )
 }

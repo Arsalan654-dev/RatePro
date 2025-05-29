@@ -2,7 +2,7 @@
 "use client"
 
 import { useState } from "react"
-import { MdAdd, MdEdit, MdDelete, MdImportExport, MdFilterAlt } from "react-icons/md"
+import { MdAdd, MdEdit, MdDelete, MdImportExport, MdFilterAlt, MdSave } from "react-icons/md"
 
 const Audiences = () => {
   const [audiences, setAudiences] = useState([
@@ -66,12 +66,12 @@ const Audiences = () => {
       <div className="page-header">
         <h1>Audience Management</h1>
         <div className="actions">
-          <button className="btn btn-primary" onClick={() => setShowForm(true)}>
+          <a className="btn btn-primary" onClick={() => setShowForm(true)}>
             <MdAdd /> Create Audience
-          </button>
-          <button className="btn btn-outline-primary" onClick={() => setImportModal(true)}>
+          </a>
+          <a className="btn btn-outline-primary" onClick={() => setImportModal(true)}>
             <MdImportExport /> Import
-          </button>
+          </a>
         </div>
       </div>
 

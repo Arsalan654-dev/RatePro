@@ -1,42 +1,4 @@
-/* .profile-page {
-  padding-bottom: 20px;
-}
 
-.profile-container {
-  display: flex;
-  gap: 24px;
-}
-
-.profile-sidebar {
-  width: 280px;
-  flex-shrink: 0;
-}
-
-.profile-avatar-container {
-  background-color: var(--light-card);
-  border-radius: var(--border-radius);
-  box-shadow: var(--shadow-sm);
-  padding: 24px;
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-.dark .profile-avatar-container {
-  background-color: var(--dark-card);
-}
-
-.profile-avatar {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin-bottom: 16px;
-}
-
-.profile-avatar-placeholder {
-  width: 120px;
-  height: 120px;
-} */
 
 .profile-page {
   padding-bottom: 20px;

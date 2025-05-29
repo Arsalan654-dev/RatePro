@@ -1,34 +1,92 @@
-.app-container {
+/* src/components/Layout/Layout.css */
+
+/* Layout styles */
+.layout-root {
   display: flex;
   min-height: 100vh;
+  position: relative;
 }
 
-.app-container.light {
-  background-color: var(--light-bg);
-  color: var(--light-text);
-}
-
-.app-container.dark {
-  background-color: var(--dark-bg);
-  color: var(--dark-text);
-}
-
-.main-content {
+.main-wrapper {
   flex: 1;
   display: flex;
   flex-direction: column;
-  min-width: 0;
+  margin-left: 0;
   transition: margin-left 0.3s ease;
+  width: 100%;
 }
 
-.content-area {
+/* When sidebar is open on desktop */
+@media (min-width: 992px) {
+  .main-wrapper.expanded {
+    margin-left: 260px;
+    width: calc(100% - 260px);
+  }
+  
+  .main-wrapper.collapsed {
+    margin-left: 70px;
+    width: calc(100% - 70px);
+  }
+}
+.main-content {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  margin-top: 70px; /* Height of header */
+}
+.content-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 0 15px;
+}
+.main-content-area {
   flex: 1;
   padding: 20px;
   overflow-y: auto;
 }
 
-@media (max-width: 768px) {
-  .content-area {
-    padding: 16px;
+
+
+.main-content-area.expanded {
+  margin-left: 260px;
+}
+
+.main-content-area.collapsed {
+  margin-left: 70px;
+}
+
+
+@media (max-width: 991px) {
+  .main-content-area.expanded,
+  .main-content-area.collapsed {
+    margin-left: 0 !important;
   }
+}
+
+/* Responsive adjustments */
+@media (max-width: 991px) {
+  .main-wrapper {
+    margin-left: 0 !important;
+    width: 100% !important;
+  }
+  
+  .main-content {
+    padding: 15px;
+  }
+}
+
+.sidebar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 998;
+  display: none;
+}
+
+.sidebar-overlay.active {
+  display: block;
 }

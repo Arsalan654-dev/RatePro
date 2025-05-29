@@ -66,7 +66,7 @@ const CreateSurvey = () => {
           />
         </div>
 
-        <div className="form-group">
+        <div className="form-group ">
           <label>Survey Description</label>
           <textarea
             value={survey.description}
@@ -81,6 +81,7 @@ const CreateSurvey = () => {
             <div className="form-group">
               <label>Question Text</label>
               <input
+              
                 type="text"
                 value={currentQuestion.text}
                 onChange={(e) => setCurrentQuestion({...currentQuestion, text: e.target.value})}
@@ -90,6 +91,7 @@ const CreateSurvey = () => {
             <div className="form-group">
               <label>Question Type</label>
               <select
+              
                 value={currentQuestion.type}
                 onChange={(e) => setCurrentQuestion({...currentQuestion, type: e.target.value})}
               >
@@ -116,6 +118,7 @@ const CreateSurvey = () => {
                       }}
                     />
                     <button
+                    
                       onClick={() => {
                         const newOptions = [...currentQuestion.options]
                         newOptions.splice(index, 1)
@@ -127,6 +130,7 @@ const CreateSurvey = () => {
                   </div>
                 ))}
                 <button
+              
                   onClick={() => setCurrentQuestion({
                     ...currentQuestion,
                     options: [...currentQuestion.options, '']
@@ -179,6 +183,7 @@ const CreateSurvey = () => {
                     <option value="hide">Hide if</option>
                   </select>
                   <button
+                  
                     onClick={() => {
                       const newConditions = [...currentQuestion.conditions]
                       newConditions.splice(index, 1)
@@ -208,6 +213,7 @@ const CreateSurvey = () => {
                   <p>Conditional: {question.conditions.length} rules</p>
                 )}
                 <button
+        
                   onClick={() => {
                     setCurrentQuestion(question)
                     setSurvey(prev => ({

@@ -1,3 +1,5 @@
+// src\components\SatisfactionChart\SatisfactionChart.jsx
+
 "use client"
 
 import { useState, useEffect } from "react"

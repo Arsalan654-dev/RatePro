@@ -1,8 +1,9 @@
+// src\pages\Surveys\Surveys.jsx
 "use client"
 
 import { useState } from "react"
 import { MdAdd, MdFilterList, MdSearch } from "react-icons/md"
-import SurveyList from "../../components/SurveyList/SurveyList.jsx"
+import SurveyList from "./SurveyList.jsx"
 import "./Surveys.css"
 
 const Surveys = () => {

@@ -1,3 +1,5 @@
+// src\pages\NotFound\NotFound.jsx
+
 "use client"
 
 import { useNavigate } from "react-router-dom"

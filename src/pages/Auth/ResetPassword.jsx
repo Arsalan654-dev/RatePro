@@ -1,86 +1,105 @@
+// src\pages\Auth\ResetPassword.jsx
 "use client"
-
 import { useState } from "react"
-import { Link, useNavigate } from "react-router-dom"
-import { useAuth } from "../../contexts/AuthContext.jsx"
-import "./Auth.css"
+import { useNavigate } from "react-router-dom"
 
 const ResetPassword = () => {
   const [password, setPassword] = useState("")
   const [confirmPassword, setConfirmPassword] = useState("")
   const [error, setError] = useState("")
-  const [loading, setLoading] = useState(false)
-  const { updatePassword } = useAuth()
   const navigate = useNavigate()
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault()
-
+    if (password.length < 6) {
+      setError("Password must be at least 6 characters long")
+      return
+    }
     if (password !== confirmPassword) {
-      return setError("Passwords do not match")
+      setError("Passwords do not match")
+      return
     }
-
-    try {
-      setError("")
-      setLoading(true)
-      await updatePassword(password)
-      navigate("/login")
-    } catch (error) {
-      setError("Failed to update password")
-      console.error(error)
-    } finally {
-      setLoading(false)
-    }
+    setError("")
+    navigate("/login")
   }
 
   return (
-    <div className="auth-container">
-      <div className="auth-card">
-        <div className="auth-header">
-          <h1 className="auth-title">Rate Pro</h1>
-          <p className="auth-subtitle">Create new password</p>
-        </div>
-
-        {error && <div className="auth-error">{error}</div>}
-
-        <form onSubmit={handleSubmit} className="auth-form">
-          <div className="form-group">
-            <label htmlFor="password">New Password</label>
-            <input
-              type="password"
-              id="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-              minLength="6"
-            />
-          </div>
-
-          <div className="form-group">
-            <label htmlFor="confirmPassword">Confirm New Password</label>
-            <input
-              type="password"
-              id="confirmPassword"
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
-              required
-              minLength="6"
-            />
-          </div>
-
-          <button type="submit" className="auth-button" disabled={loading}>
-            {loading ? "Updating..." : "Update Password"}
-          </button>
-        </form>
-
-        <div className="auth-footer">
-          <p>
-            <Link to="/login">Back to Login</Link>
-          </p>
-        </div>
-      </div>
+    <div style={styles.container}>
+      <form style={styles.form} onSubmit={handleSubmit}>
+        <h2 style={styles.heading}>Reset Password</h2>
+        <p style={styles.text}>Create your new password below.</p>
+        <input
+          type="password"
+          placeholder="New password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          style={styles.input}
+        />
+        <input
+          type="password"
+          placeholder="Confirm new password"
+          value={confirmPassword}
+          onChange={(e) => setConfirmPassword(e.target.value)}
+          style={styles.input}
+        />
+        {error && <p style={styles.error}>{error}</p>}
+        <button type="submit" style={styles.button}>Reset Password</button>
+      </form>
     </div>
   )
+}
+
+const styles = {
+  container: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    minHeight: "100vh",
+    background: "#f4f4f4",
+    padding: 20,
+  },
+  form: {
+    background: "#fff",
+    padding: 30,
+    borderRadius: 10,
+    boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
+    width: "100%",
+    maxWidth: 400,
+  },
+  heading: {
+    fontSize: 24,
+    marginBottom: 10,
+    fontWeight: "bold",
+  },
+  text: {
+    fontSize: 14,
+    marginBottom: 20,
+    color: "#666",
+  },
+  input: {
+    width: "100%",
+    padding: 10,
+    marginBottom: 10,
+    borderRadius: 5,
+    border: "1px solid #ccc",
+    fontSize: 14,
+  },
+  button: {
+    width: "100%",
+    padding: 10,
+    border: "none",
+    borderRadius: 5,
+    backgroundColor: "#007bff",
+    color: "#fff",
+    fontWeight: "bold",
+    fontSize: 16,
+    cursor: "pointer",
+  },
+  error: {
+    color: "red",
+    fontSize: 13,
+    marginBottom: 10,
+  },
 }
 
 export default ResetPassword

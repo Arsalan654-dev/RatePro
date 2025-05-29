@@ -1,3 +1,4 @@
+// src\pages\Dashboard\Dashboard.jsx
 "use client"
 
 import { useState, useEffect } from "react"
@@ -11,7 +12,7 @@ import {
   MdArrowDownward,
   MdDashboard,
 } from "react-icons/md"
-import SurveyList from "../../components/SurveyList/SurveyList.jsx"
+import SurveyList from "../Surveys/SurveyList.jsx"
 import RecentResponses from "../../components/RecentResponses/RecentResponses.jsx"
 import SatisfactionChart from "../../components/SatisfactionChart/SatisfactionChart.jsx"
 import "./Dashboard.css"

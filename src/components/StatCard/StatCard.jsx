@@ -1,3 +1,7 @@
+// src\components\StatCard\StatCard.jsx
+
+"use client"
+
 import "./StatCard.css"
 
 const StatCard = ({ icon, title, value, subtitle, color }) => {

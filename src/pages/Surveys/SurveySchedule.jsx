@@ -1,4 +1,4 @@
-// src/components/SurveySchedule/SurveySchedule.jsx
+// src/pages/SurveySchedule/SurveySchedule.jsx
 "use client"
 
 import { useState } from "react"
