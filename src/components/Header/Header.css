@@ -408,3 +408,17 @@
     gap: 8px;
   }
 }
+/* Add these to your existing Header.css */
+@media (max-width: 768px) {
+  .header {
+    left: 0 !important;
+  }
+  
+  .search-container:not(.focused) {
+    display: none;
+  }
+  
+  .page-title {
+    font-size: 16px;
+  }
+}

@@ -9,7 +9,7 @@ import { MdSave, MdEdit, MdLock } from "react-icons/md"
 import "./Profile.css"
 
 const Profile = () => {
-  const { currentUser, updateProfile, updatePassword } = useAuth()
+  const { currentUser, updateProfile, updatePassword } = useState({})
 
   const [profileData, setProfileData] = useState({
     name: currentUser?.name || "",

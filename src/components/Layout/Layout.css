@@ -1,49 +1,63 @@
 /* src/components/Layout/Layout.css */
 
 /* Layout styles */
+/* Updated Layout.css */
 .layout-root {
   display: flex;
   min-height: 100vh;
   position: relative;
 }
 
+
+
 .main-wrapper {
   flex: 1;
+  transition: margin-left 0.3s ease;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  margin-left: 0;
-  transition: margin-left 0.3s ease;
-  width: 100%;
 }
 
-/* When sidebar is open on desktop */
-@media (min-width: 992px) {
-  .main-wrapper.expanded {
-    margin-left: 260px;
-    width: calc(100% - 260px);
-  }
-  
-  .main-wrapper.collapsed {
-    margin-left: 70px;
-    width: calc(100% - 70px);
-  }
+.main-wrapper.expanded {
+  margin-left: 260px;
 }
+
+.main-wrapper.collapsed {
+  margin-left: 70px;
+}
+
 .main-content {
   flex: 1;
   padding: 20px;
+  margin-top: 70px; /* Header height */
   overflow-y: auto;
-  margin-top: 70px; /* Height of header */
 }
+
 .content-container {
-  max-width: 1200px;
-  margin: 0 auto;
   width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
   padding: 0 15px;
 }
-.main-content-area {
-  flex: 1;
-  padding: 20px;
-  overflow-y: auto;
+    
+  
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+  .main-wrapper.expanded,
+  .main-wrapper.collapsed {
+    margin-left: 0;
+  }
+  
+  .main-content {
+    padding: 15px;
+  }
+}
+
+@media (max-width: 768px) {
+  .main-content {
+    padding: 10px;
+  }
 }
 
 

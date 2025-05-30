@@ -1,3 +1,5 @@
+// src\pages\Auth\EnterEmail.jsx
+
 import React from 'react'
 
 const EnterEmail = () => {

@@ -1,3 +1,5 @@
+// src\components\Header\Header.jsx
+
 "use client"
 
 import { useState, useRef, useEffect } from "react"
@@ -23,6 +25,8 @@ const Header = ({ isMobile, sidebarCollapsed, darkMode, toggleTheme }) => {
   
   const navigate = useNavigate()
   const headerRef = useRef();
+
+  
 
   // Close dropdowns when clicking outside
   useEffect(() => {
@@ -131,11 +135,11 @@ const Header = ({ isMobile, sidebarCollapsed, darkMode, toggleTheme }) => {
                 <h6>Admin</h6>
                 <span>admin@ratepro.com</span>
               </div>
-              <Link to="/profile" className="dropdown-item">
+              <Link to="profile/" className="dropdown-item">
                 <MdAccountCircle />
                 <span>Profile</span>
               </Link>
-              <Link to="/settings" className="dropdown-item">
+              <Link to="settings/" className="dropdown-item">
                 <MdSettings />
                 <span>Settings</span>
               </Link>

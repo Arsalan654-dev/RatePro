@@ -1,3 +1,5 @@
+// src\components\Sidebar\Sidebar.jsx
+
 "use client"
 
 import { useState, useEffect, useRef } from "react"
@@ -77,7 +79,7 @@ const Sidebar = ({ darkMode, isOpen, isMobile,  onClose }) => {
   return (
     <>
       {isMobile && isOpen && (
-        <div className="sidebar-overlay active" onClick={onClose}></div>
+        <div className="sidebar-overlay" onClick={onClose}></div>
       )}
       
       <aside
